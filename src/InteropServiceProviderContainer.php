@@ -38,15 +38,15 @@ final class InteropServiceProviderContainer implements ContainerInterface
         if ($provider instanceof ServiceProviderInterface) {
             foreach ($provider->getServices() as $service => $callable) {
                 if ($this->hasShared($service)) {
-                    $share = function () use ($callable) {
-                        return $callable($this);
-                    };
-                } else {
                     $previous = $this->get($service);
                     $share = function () use ($callable, $previous) {
                         return $callable($this, function () use ($previous) {
                             return $previous;
                         });
+                    };
+                } else {
+                    $share = function () use ($callable) {
+                        return $callable($this);
                     };
                 }
 
