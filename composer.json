@@ -2,7 +2,7 @@
     "name": "basal/league-container-interop-service-provider",
     "description": "Decorator for added support of interop service providers to League Container",
     "type": "package",
-    "license": "MIT",
+    "license": "project",
     "authors": [
         {
             "name": "Basal",
